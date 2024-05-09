@@ -1,5 +1,5 @@
 import { Card, Col, ListGroup } from "react-bootstrap"
-import { useParams } from "react-router-dom"
+import { NavLink, useParams } from "react-router-dom"
 import { Result } from "../interfaces/IArticle"
 import { useEffect, useState } from "react"
 
@@ -28,7 +28,7 @@ const DetailsPage = () => {
   }, [])
 
   return (
-    <Col xs={12} md={10} lg={8}>
+    <Col xs={12} md={10} lg={8} className='my-5'>
       <Card>
         <Card.Img variant='top' src={article?.image_url} />
         <Card.Body>
@@ -43,6 +43,9 @@ const DetailsPage = () => {
         <Card.Body>
           <Card.Link href='#'>{article?.url}</Card.Link>
         </Card.Body>
+        <NavLink to={"/"} className={"btn btn-info"}>
+          Ritorna alla pagina principale!
+        </NavLink>
       </Card>
     </Col>
   )
