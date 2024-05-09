@@ -25,6 +25,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     fetchFunction()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

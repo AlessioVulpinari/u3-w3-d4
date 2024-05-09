@@ -24,7 +24,11 @@ const MainPage = () => {
     fetchFunction()
   }, [])
 
-  return <Row>{articles && articles.results.map((article) => <SingleArticle article={article} key={article.id} />)}</Row>
+  return (
+    <Row className='gy-3'>
+      {articles && articles.results.map((article) => <SingleArticle article={article} key={article.id} />)}
+    </Row>
+  )
 }
 
 export default MainPage
