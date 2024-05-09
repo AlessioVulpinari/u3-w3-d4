@@ -4,7 +4,7 @@ import { Articles } from "../interfaces/IArticle"
 import SingleArticle from "./SingleArticle"
 
 const MainPage = () => {
-  const [articles, setArticles] = useState<Articles>()
+  const [articles, setArticles] = useState<Articles | null>(null)
 
   const fetchFunction = async () => {
     try {

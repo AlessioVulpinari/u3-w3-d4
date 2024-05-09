@@ -7,7 +7,7 @@ const DetailsPage = () => {
   const params = useParams()
   const articleId = params.articleId
 
-  const [article, setArticle] = useState<Result>()
+  const [article, setArticle] = useState<Result | null>(null)
 
   const fetchFunction = async () => {
     try {
@@ -29,26 +29,30 @@ const DetailsPage = () => {
   }, [])
 
   return (
-    <Col xs={12} md={10} lg={8} className='my-5'>
-      <Card>
-        <Card.Img variant='top' src={article?.image_url} />
-        <Card.Body>
-          <Card.Title>{article?.title}</Card.Title>
-          <Card.Subtitle className='mb-2 text-muted'>{article?.news_site}</Card.Subtitle>
-          <Card.Text>{article?.summary}</Card.Text>
-        </Card.Body>
-        <ListGroup className='list-group-flush'>
-          {/* <ListGroup.Item>{article?.published_at.toLocaleDateString()}</ListGroup.Item> */}
-          {/* <ListGroup.Item>{article?.updated_at.toLocaleDateString()}</ListGroup.Item> */}
-        </ListGroup>
-        <Card.Body>
-          <Card.Link href='#'>{article?.url}</Card.Link>
-        </Card.Body>
-        <NavLink to={"/"} className={"btn btn-info"}>
-          Ritorna alla pagina principale!
-        </NavLink>
-      </Card>
-    </Col>
+    <>
+      {article && (
+        <Col xs={12} md={10} lg={8} className='my-5'>
+          <Card>
+            <Card.Img variant='top' src={article?.image_url} />
+            <Card.Body>
+              <Card.Title>{article?.title}</Card.Title>
+              <Card.Subtitle className='mb-2 text-muted'>{article?.news_site}</Card.Subtitle>
+              <Card.Text>{article?.summary}</Card.Text>
+            </Card.Body>
+            <ListGroup className='list-group-flush'>
+              {/* <ListGroup.Item>{article?.published_at.toLocaleDateString()}</ListGroup.Item> */}
+              {/* <ListGroup.Item>{article?.updated_at.toLocaleDateString()}</ListGroup.Item> */}
+            </ListGroup>
+            <Card.Body>
+              <Card.Link href='#'>{article?.url}</Card.Link>
+            </Card.Body>
+            <NavLink to={"/"} className={"btn btn-info"}>
+              Ritorna alla pagina principale!
+            </NavLink>
+          </Card>
+        </Col>
+      )}
+    </>
   )
 }
 
