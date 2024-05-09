@@ -35,16 +35,18 @@ const DetailsPage = () => {
           <Card>
             <Card.Img variant='top' src={article?.image_url} />
             <Card.Body>
-              <Card.Title>{article?.title}</Card.Title>
-              <Card.Subtitle className='mb-2 text-muted'>{article?.news_site}</Card.Subtitle>
-              <Card.Text>{article?.summary}</Card.Text>
+              <Card.Title>{article.title}</Card.Title>
+              <Card.Subtitle className='mb-2 text-muted'>{article.news_site}</Card.Subtitle>
+              <Card.Text>{article.summary}</Card.Text>
             </Card.Body>
             <ListGroup className='list-group-flush'>
-              {/* <ListGroup.Item>{article?.published_at.toLocaleDateString()}</ListGroup.Item> */}
-              {/* <ListGroup.Item>{article?.updated_at.toLocaleDateString()}</ListGroup.Item> */}
+              <ListGroup.Item>Pubblicata il: {new Date(article.published_at).toLocaleDateString()}</ListGroup.Item>
+              <ListGroup.Item>Ultima modifica: {new Date(article.updated_at).toLocaleDateString()}</ListGroup.Item>
             </ListGroup>
             <Card.Body>
-              <Card.Link href='#'>{article?.url}</Card.Link>
+              <Card.Link target='blank' href={article.url}>
+                {article.url}
+              </Card.Link>
             </Card.Body>
             <NavLink to={"/"} className={"btn btn-info"}>
               Ritorna alla pagina principale!
